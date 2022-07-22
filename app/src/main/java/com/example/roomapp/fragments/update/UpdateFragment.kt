@@ -20,7 +20,7 @@ class UpdateFragment : Fragment() {
 
     private val args by navArgs<UpdateFragmentArgs>()
 
-    private lateinit var mUserViewModel: InventoryItemViewModel
+    private lateinit var inventoryItemViewModel: InventoryItemViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class UpdateFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
-        mUserViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
+        inventoryItemViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
 
         view.updateFirstName_et.setText(args.currentUser.firstName)
         view.updateLastName_et.setText(args.currentUser.lastName)
@@ -47,14 +47,14 @@ class UpdateFragment : Fragment() {
 
     private fun updateItem() {
         val name = updateFirstName_et.text.toString()
-        val priceHuf = updateLastName_et.text.toString()
-        val age = Integer.parseInt(updateAge_et.text.toString())
+        val priceHuf = Integer.parseInt(updateAge_et.text.toString())
+        val priceEuf = Integer.parseInt(updateAge_et.text.toString())
 
         if (inputCheck(name, priceHuf, updateAge_et.text)) {
             // Create User Object
-            val updatedUser = InventoryItem(args.currentUser.id, name, priceHuf, age)
+            val updatedInventoryItem = InventoryItem(args.currentUser.id, name, priceHuf, priceEuf)
             // Update Current User
-            mUserViewModel.updateUser(updatedUser)
+            inventoryItemViewModel.updateInventoryItem(updatedInventoryItem)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
             // Navigate Back
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
@@ -64,8 +64,10 @@ class UpdateFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean {
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
+    private fun inputCheck(firstName: String, priceHuf: Int, priceEur: Editable): Boolean {
+        //return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
+        return true
+        TODO("NINCS INPUT CHECK")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,15 +76,15 @@ class UpdateFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_delete) {
-            deleteUser()
+            deleteInventoryItem()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun deleteUser() {
+    private fun deleteInventoryItem() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            mUserViewModel.deleteUser(args.currentUser)
+            inventoryItemViewModel.deleteInventoryItem(args.currentUser)
             Toast.makeText(
                 requireContext(),
                 "Successfully removed: ${args.currentUser.firstName}",
