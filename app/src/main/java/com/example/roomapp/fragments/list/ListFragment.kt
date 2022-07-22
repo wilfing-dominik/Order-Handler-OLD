@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {
 
-    private lateinit var mUserViewModel: InventoryItemViewModel
+    private lateinit var inventoryViewModel: InventoryItemViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +31,8 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // UserViewModel
-        mUserViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+        inventoryViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
+        inventoryViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
         })
 
@@ -60,7 +60,7 @@ class ListFragment : Fragment() {
     private fun deleteAllUsers() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            mUserViewModel.deleteAllUsers()
+            inventoryViewModel.deleteAllInventoryItem()
             Toast.makeText(
                 requireContext(),
                 "Successfully removed everything",

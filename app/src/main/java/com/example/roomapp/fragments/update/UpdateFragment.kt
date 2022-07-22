@@ -31,9 +31,9 @@ class UpdateFragment : Fragment() {
 
         inventoryItemViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
 
-        view.updateFirstName_et.setText(args.currentUser.firstName)
-        view.updateLastName_et.setText(args.currentUser.lastName)
-        view.updateAge_et.setText(args.currentUser.age.toString())
+        view.updateName_et.setText(args.currentInventoryItem.name)
+        view.update_price_huf_et.setText(args.currentInventoryItem.price_huf.toString())
+        view.update_price_eur_et.setText(args.currentInventoryItem.price_eur.toString())
 
         view.update_btn.setOnClickListener {
             updateItem()
@@ -46,14 +46,14 @@ class UpdateFragment : Fragment() {
     }
 
     private fun updateItem() {
-        val name = updateFirstName_et.text.toString()
-        val priceHuf = Integer.parseInt(updateAge_et.text.toString())
-        val priceEuf = Integer.parseInt(updateAge_et.text.toString())
+        val name = updateName_et.text.toString()
+        val priceHuf = Integer.parseInt(update_price_huf_et.text.toString())
+        val priceEur = Integer.parseInt(update_price_eur_et.text.toString())
 
-        if (inputCheck(name, priceHuf, updateAge_et.text)) {
-            // Create User Object
-            val updatedInventoryItem = InventoryItem(args.currentUser.id, name, priceHuf, priceEuf)
-            // Update Current User
+        if (inputCheck(name, priceHuf, priceEur)) {
+            // Create InventoryItem Object
+            val updatedInventoryItem = InventoryItem(args.currentInventoryItem.id, name, priceHuf, priceEur)
+            // Update Current InventoryItem
             inventoryItemViewModel.updateInventoryItem(updatedInventoryItem)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
             // Navigate Back
@@ -64,7 +64,7 @@ class UpdateFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, priceHuf: Int, priceEur: Editable): Boolean {
+    private fun inputCheck(firstName: String, priceHuf: Int, priceEur: Int): Boolean {
         //return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
         return true
         TODO("NINCS INPUT CHECK")
@@ -84,16 +84,16 @@ class UpdateFragment : Fragment() {
     private fun deleteInventoryItem() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            inventoryItemViewModel.deleteInventoryItem(args.currentUser)
+            inventoryItemViewModel.deleteInventoryItem(args.currentInventoryItem)
             Toast.makeText(
                 requireContext(),
-                "Successfully removed: ${args.currentUser.firstName}",
+                "Successfully removed: ${args.currentInventoryItem.name}",
                 Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
         builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete ${args.currentUser.firstName}?")
-        builder.setMessage("Are you sure you want to delete ${args.currentUser.firstName}?")
+        builder.setTitle("Delete ${args.currentInventoryItem.name}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentInventoryItem.name}?")
         builder.create().show()
     }
 }

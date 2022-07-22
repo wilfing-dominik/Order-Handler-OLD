@@ -26,9 +26,9 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = inventoryItemList[position]
         holder.itemView.id_txt.text = currentItem.id.toString()
-        holder.itemView.firstName_txt.text = currentItem.name
-        holder.itemView.age_txt.text = currentItem.price_huf.toString()
-        holder.itemView.age_txt.text = currentItem.price_eur.toString()
+        holder.itemView.Name_txt.text = currentItem.name
+        holder.itemView.price_huf_txt.text = currentItem.price_huf.toString()
+        holder.itemView.price_eur_txt.text = currentItem.price_eur.toString()
 
         holder.itemView.rowLayout.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
@@ -36,8 +36,8 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         }
     }
 
-    fun setData(user: List<InventoryItem>){
-        this.inventoryItemList = user
+    fun setData(inventoryItems: List<InventoryItem>){
+        this.inventoryItemList = inventoryItems
         notifyDataSetChanged()
     }
 }
