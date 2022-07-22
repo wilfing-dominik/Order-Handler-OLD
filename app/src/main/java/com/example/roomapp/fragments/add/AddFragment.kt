@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_add.view.*
 
 class AddFragment : Fragment() {
 
-    private lateinit var InventoryItemViewModel: InventoryItemViewModel
+    private lateinit var inventoryItemViewModel: InventoryItemViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
-        InventoryItemViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
+        inventoryItemViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
 
         view.add_btn.setOnClickListener {
             insertDataToDatabase()
@@ -50,7 +50,7 @@ class AddFragment : Fragment() {
                 Integer.parseInt(priceEur.toString())
             )
             // Add Data to Database
-            InventoryItemViewModel.addInventoryItem(inventoryItem)
+            inventoryItemViewModel.addInventoryItem(inventoryItem)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
             // Navigate Back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
