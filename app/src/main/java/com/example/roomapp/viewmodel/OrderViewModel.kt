@@ -31,19 +31,19 @@ class OrderViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun updateInventoryItem(order: Order){
+    fun updateOrder(order: Order){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateOrder(order)
         }
     }
 
-    fun deleteInventoryItem(order: Order){
+    fun deleteOrder(order: Order){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteOrder(order)
         }
     }
 
-    fun deleteAllInventoryItem(){
+    fun deleteAllOrder(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllOrder()
         }

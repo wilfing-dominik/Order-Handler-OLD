@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.roomapp.R
-import com.example.roomapp.model.InventoryItem
-import com.example.roomapp.viewmodel.InventoryItemViewModel
+import com.example.roomapp.model.Order
+import com.example.roomapp.viewmodel.OrderViewModel
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
@@ -20,7 +20,7 @@ class OrderUpdateFragment : Fragment() {
 
     private val args by navArgs<InventoryItemUpdateFragmentArgs>()
 
-    private lateinit var orderViewModel: InventoryItemViewModel
+    private lateinit var orderViewModel: OrderViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +29,11 @@ class OrderUpdateFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
-        orderViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
+        orderViewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
 
-        view.updateName_et.setText(args.currentInventoryItem.name)
-        view.update_price_huf_et.setText(args.currentInventoryItem.price_huf.toString())
-        view.update_price_eur_et.setText(args.currentInventoryItem.price_eur.toString())
+        view.updateName_et.setText(args.currentOrder.name)
+        view.update_price_huf_et.setText(args.currentOrder.price_huf.toString())
+        view.update_price_eur_et.setText(args.currentOrder.price_eur.toString())
 
         view.update_btn.setOnClickListener {
             updateItem()
@@ -51,10 +51,10 @@ class OrderUpdateFragment : Fragment() {
         val priceEur = Integer.parseInt(update_price_eur_et.text.toString())
 
         if (inputCheck(name, priceHuf, priceEur)) {
-            // Create InventoryItem Object
-            val updatedInventoryItem = InventoryItem(args.currentInventoryItem.id, name, priceHuf, priceEur)
-            // Update Current InventoryItem
-            orderViewModel.updateInventoryItem(updatedInventoryItem)
+            // Create Order Object
+            val updatedOrder = Order(args.currentOrder.id, name, priceHuf, priceEur)
+            // Update Current Order
+            orderViewModel.updateOrder(updatedOrder)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
             // Navigate Back
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
@@ -84,16 +84,16 @@ class OrderUpdateFragment : Fragment() {
     private fun deleteOrder() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            orderViewModel.deleteInventoryItem(args.currentInventoryItem)
+            orderViewModel.deleteOrder(args.currentOrder)
             Toast.makeText(
                 requireContext(),
-                "Successfully removed: ${args.currentInventoryItem.name}",
+                "Successfully removed: ${args.currentOrder.name}",
                 Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
         builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete ${args.currentInventoryItem.name}?")
-        builder.setMessage("Are you sure you want to delete ${args.currentInventoryItem.name}?")
+        builder.setTitle("Delete ${args.currentOrder.name}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentOrder.name}?")
         builder.create().show()
     }
 }
