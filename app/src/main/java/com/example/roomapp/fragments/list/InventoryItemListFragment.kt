@@ -13,7 +13,7 @@ import com.example.roomapp.R
 import com.example.roomapp.viewmodel.InventoryItemViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
-class ListFragment : Fragment() {
+class InventoryItemListFragment : Fragment() {
 
     private lateinit var inventoryViewModel: InventoryItemViewModel
 
@@ -25,7 +25,7 @@ class ListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         // Recyclerview
-        val adapter = ListAdapter()
+        val adapter = InventoryItemListAdapter()
         val recyclerView = view.recyclerview
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

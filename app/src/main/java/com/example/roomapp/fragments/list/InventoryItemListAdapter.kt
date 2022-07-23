@@ -9,7 +9,7 @@ import com.example.roomapp.R
 import com.example.roomapp.model.InventoryItem
 import kotlinx.android.synthetic.main.custom_row.view.*
 
-class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
+class InventoryItemListAdapter: RecyclerView.Adapter<InventoryItemListAdapter.MyViewHolder>() {
 
     private var inventoryItemList = emptyList<InventoryItem>()
 
@@ -31,7 +31,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.price_eur_txt.text = currentItem.price_eur.toString()
 
         holder.itemView.rowLayout.setOnClickListener {
-            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            val action = InventoryItemListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
     }

@@ -16,7 +16,7 @@ import com.example.roomapp.viewmodel.InventoryItemViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
 
-class AddFragment : Fragment() {
+class AddInventoryItemFragment : Fragment() {
 
     private lateinit var inventoryItemViewModel: InventoryItemViewModel
 

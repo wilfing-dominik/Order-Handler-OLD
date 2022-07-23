@@ -16,9 +16,9 @@ import com.example.roomapp.viewmodel.InventoryItemViewModel
 import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
-class UpdateFragment : Fragment() {
+class InventoryItemUpdateFragment : Fragment() {
 
-    private val args by navArgs<UpdateFragmentArgs>()
+    private val args by navArgs<InventoryItemUpdateFragmentArgs>()
 
     private lateinit var inventoryItemViewModel: InventoryItemViewModel
 

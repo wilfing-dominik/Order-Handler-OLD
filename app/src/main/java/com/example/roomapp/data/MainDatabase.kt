@@ -10,6 +10,7 @@ import com.example.roomapp.model.InventoryItem
 abstract class MainDatabase : RoomDatabase() {
 
     abstract fun InventoryItemDao(): InventoryItemDao
+    abstract fun OrderDao(): OrderDao
 
     companion object {
         @Volatile
