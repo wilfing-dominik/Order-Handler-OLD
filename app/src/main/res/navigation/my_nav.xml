@@ -3,39 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/listInventoryItemFragment">
 
     <fragment
-        android:id="@+id/listFragment"
+        android:id="@+id/listInventoryItemFragment"
         android:name="com.example.roomapp.fragments.list.InventoryItemListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list_inventory_item" >
         <action
             android:id="@+id/action_listFragment_to_addFragment"
-            app:destination="@id/addFragment" />
+            app:destination="@id/addInventoryItemFragment" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
+            app:destination="@id/updateInventoryItemFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addFragment"
+        android:id="@+id/addInventoryItemFragment"
         android:name="com.example.roomapp.fragments.add.AddInventoryItemFragment"
         android:label="Add"
-        tools:layout="@layout/fragment_add" >
+        tools:layout="@layout/fragment_add_inventory_item" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/listInventoryItemFragment" />
     </fragment>
     <fragment
-        android:id="@+id/updateFragment"
+        android:id="@+id/updateInventoryItemFragment"
         android:name="com.example.roomapp.fragments.update.InventoryItemUpdateFragment"
         android:label="Update"
-        tools:layout="@layout/fragment_update" >
+        tools:layout="@layout/fragment_update_inventory_item" >
         <action
             android:id="@+id/action_updateFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/listInventoryItemFragment" />
         <argument
             android:name="currentInventoryItem"
             app:argType="com.example.roomapp.model.InventoryItem" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/updateOrder"
+        android:name="com.example.roomapp.fragments.update.OrderUpdateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update_order" >
+        <action
+            android:id="@+id/action_updateOrderFragment_to_listorderFragment"
+            app:destination="@id/listOrderFragment" />
+        <argument
+            android:name="currentOrder"
+            app:argType="com.example.roomapp.model.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOrderFragment"
+        android:name="com.example.roomapp.fragments.list.OrderListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list_order" >
+        <action
+            android:id="@+id/action_listOrderFragment_to_addOrderFragment"
+            app:destination="@id/addOrderFragment" />
+        <action
+            android:id="@+id/action_listOrderFragment_to_updateOrderFragment"
+            app:destination="@id/updateOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOrderFragment"
+        android:name="com.example.roomapp.fragments.add.AddOrderFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add_order" >
+        <action
+            android:id="@+id/action_addorderFragment_to_listOrderFragment"
+            app:destination="@id/listOrderFragment" />
     </fragment>
 </navigation>

@@ -16,7 +16,7 @@ class InventoryItemListAdapter: RecyclerView.Adapter<InventoryItemListAdapter.My
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_row, parent, false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_row_inventory_item, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -2,7 +2,6 @@ package com.example.roomapp.fragments.add
 
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.roomapp.R
 import com.example.roomapp.model.InventoryItem
 import com.example.roomapp.viewmodel.InventoryItemViewModel
-import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_add.view.*
+import kotlinx.android.synthetic.main.fragment_add_inventory_item.*
+import kotlinx.android.synthetic.main.fragment_add_inventory_item.view.*
 
 class AddInventoryItemFragment : Fragment() {
 
@@ -25,7 +24,7 @@ class AddInventoryItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_add, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_inventory_item, container, false)
 
         inventoryItemViewModel = ViewModelProvider(this).get(InventoryItemViewModel::class.java)
 

@@ -1,8 +1,6 @@
 package com.example.roomapp.fragments.add
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +23,7 @@ class AddOrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_add, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_inventory_item, container, false)
 
         orderViewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
 
@@ -37,17 +35,15 @@ class AddOrderFragment : Fragment() {
     }
 
     private fun insertDataToDatabase() {
-        val name = addName_et.text.toString()
-        val priceHuf = price_huf_et.text.toString()
-        val priceEur = price_eur_et.text
+        val foodId = addFoodId.text.toString()
+        val tableId = addTableId.text.toString()
 
-        if(inputCheck(name, priceHuf, priceEur)){ TODO("EZ MAJD HA A FRONTEND MEGVAN")
+        if(inputCheck(foodId, tableId)){
             // Create Order Object
             val order = Order(
                 0,
-                name,
-                Integer.parseInt(priceHuf.toString()),
-                Integer.parseInt(priceEur.toString())
+                Integer.parseInt(foodId.toString()),
+                Integer.parseInt(tableId.toString())
             )
             // Add Data to Database
             orderViewModel.addOrder(order)
@@ -59,7 +55,7 @@ class AddOrderFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean{
+    private fun inputCheck(foodId: Int, tableId: Int): Boolean{
         //return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
         return true
     }

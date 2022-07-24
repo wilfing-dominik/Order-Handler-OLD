@@ -22,7 +22,7 @@ class InventoryItemListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_inventory_item, container, false)
 
         // Recyclerview
         val adapter = InventoryItemListAdapter()
