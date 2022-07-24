@@ -5,12 +5,12 @@
     android:id="@+id/my_nav"
     app:startDestination="@id/list_inventory">
 
-    <!--MAIN PAGE-->
+    <!--MAIN TABLES PAGE-->
     <fragment
         android:id="@+id/list_tables"
-        android:name="com.example.roomapp.fragments.list.InventoryItemListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list_inventory_item">
+        tools:layout="@layout/fragment_list_tables">
+
         <action
             android:id="@+id/action_list_tables_to_list_inventory"
             app:destination="@id/list_inventory" />
@@ -20,14 +20,18 @@
         <action
             android:id="@+id/action_list_tables_to_list_log"
             app:destination="@id/list_log" />
+
     </fragment>
 
     <!--LOG-->
     <fragment
         android:id="@+id/list_log"
-        android:name="com.example.roomapp.fragments.list.InventoryItemListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list_inventory_item" />
+        tools:layout="@layout/fragment_list_log" >
+        <action
+            android:id="@+id/action_list_log_to_list_tables"
+            app:destination="@id/list_tables" />
+    </fragment>
 
     <!--INVENTORY FRAGMENTS-->
     <fragment
@@ -35,26 +39,41 @@
         android:name="com.example.roomapp.fragments.list.InventoryItemListFragment"
         android:label="List"
         tools:layout="@layout/fragment_list_inventory_item" >
+
         <action
             android:id="@+id/action_list_inventory_to_add_inventory"
             app:destination="@id/add_inventory" />
         <action
             android:id="@+id/action_list_inventory_to_update_inventory"
             app:destination="@id/update_inventory" />
+        <action
+            android:id="@+id/action_list_inventory_to_list_tables"
+            app:destination="@id/list_tables" />
+
     </fragment>
+
     <fragment
         android:id="@+id/add_inventory"
         android:name="com.example.roomapp.fragments.add.AddInventoryItemFragment"
         android:label="Add"
-        tools:layout="@layout/fragment_add_inventory_item" />
+        tools:layout="@layout/fragment_add_inventory_item" >
+        <action
+            android:id="@+id/action_add_inventory_to_list_inventory"
+            app:destination="@id/list_inventory" />
+    </fragment>
     <fragment
         android:id="@+id/update_inventory"
         android:name="com.example.roomapp.fragments.update.InventoryItemUpdateFragment"
         android:label="Update"
         tools:layout="@layout/fragment_update_inventory_item" >
+
         <argument
             android:name="currentInventoryItem"
             app:argType="com.example.roomapp.model.InventoryItem" />
+        <action
+            android:id="@+id/action_update_inventory_to_list_inventory"
+            app:destination="@id/list_inventory" />
+
     </fragment>
 
     <!--ORDER FRAGMENTS-->
@@ -63,26 +82,42 @@
         android:name="com.example.roomapp.fragments.update.OrderUpdateFragment"
         android:label="Update"
         tools:layout="@layout/fragment_update_order" >
+
         <argument
             android:name="currentOrder"
             app:argType="com.example.roomapp.model.Order" />
+        <action
+            android:id="@+id/action_update_order_to_list_order"
+            app:destination="@id/list_order" />
+
     </fragment>
+
     <fragment
         android:id="@+id/list_order"
         android:name="com.example.roomapp.fragments.list.OrderListFragment"
         android:label="List"
         tools:layout="@layout/fragment_list_order" >
+
         <action
             android:id="@+id/action_list_order_to_add_order"
             app:destination="@id/add_order" />
         <action
             android:id="@+id/action_list_order_to_update_order"
             app:destination="@id/update_order" />
+        <action
+            android:id="@+id/action_list_order_to_list_tables"
+            app:destination="@id/list_tables" />
+
     </fragment>
+
     <fragment
         android:id="@+id/add_order"
         android:name="com.example.roomapp.fragments.add.AddOrderFragment"
         android:label="Add"
-        tools:layout="@layout/fragment_add_order" />
+        tools:layout="@layout/fragment_add_order" >
+        <action
+            android:id="@+id/action_add_order_to_list_order"
+            app:destination="@id/list_order" />
+    </fragment>
 
 </navigation>
