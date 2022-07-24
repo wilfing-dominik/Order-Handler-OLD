@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.roomapp.R
 import com.example.roomapp.model.Order
 import com.example.roomapp.viewmodel.OrderViewModel
-import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_add.view.*
+import kotlinx.android.synthetic.main.fragment_add_order.*
+import kotlinx.android.synthetic.main.fragment_add_order.view.*
 
 class AddOrderFragment : Fragment() {
 

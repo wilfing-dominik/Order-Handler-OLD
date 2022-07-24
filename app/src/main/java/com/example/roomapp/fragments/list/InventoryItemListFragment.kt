@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomapp.R
 import com.example.roomapp.viewmodel.InventoryItemViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
+import kotlinx.android.synthetic.main.fragment_list_inventory_item.view.*
 
 class InventoryItemListFragment : Fragment() {
 

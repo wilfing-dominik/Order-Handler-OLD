@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomapp.R
 import com.example.roomapp.model.InventoryItem
-import kotlinx.android.synthetic.main.custom_row.view.*
+import kotlinx.android.synthetic.main.custom_row_inventory_item.view.*
 
 class InventoryItemListAdapter: RecyclerView.Adapter<InventoryItemListAdapter.MyViewHolder>() {
 
