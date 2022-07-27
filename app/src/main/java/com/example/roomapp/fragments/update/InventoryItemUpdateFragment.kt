@@ -11,8 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.roomapp.R
 import com.example.roomapp.model.InventoryItem
 import com.example.roomapp.viewmodel.InventoryItemViewModel
-import kotlinx.android.synthetic.main.fragment_update.*
-import kotlinx.android.synthetic.main.fragment_update.view.*
+import kotlinx.android.synthetic.main.fragment_update_inventory_item.*
+import kotlinx.android.synthetic.main.fragment_update_inventory_item.view.*
 
 class InventoryItemUpdateFragment : Fragment() {
 
@@ -55,7 +55,7 @@ class InventoryItemUpdateFragment : Fragment() {
             inventoryItemViewModel.updateInventoryItem(updatedInventoryItem)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
             // Navigate Back
-            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            findNavController().navigate(R.id.action_update_inventory_to_list_inventory)
         } else {
             Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT)
                 .show()
@@ -87,7 +87,7 @@ class InventoryItemUpdateFragment : Fragment() {
                 requireContext(),
                 "Successfully removed: ${args.currentInventoryItem.name}",
                 Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            findNavController().navigate(R.id.action_update_inventory_to_list_inventory)
         }
         builder.setNegativeButton("No") { _, _ -> }
         builder.setTitle("Delete ${args.currentInventoryItem.name}?")

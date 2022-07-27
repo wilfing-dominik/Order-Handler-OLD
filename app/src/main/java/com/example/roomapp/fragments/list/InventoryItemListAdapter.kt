@@ -31,7 +31,7 @@ class InventoryItemListAdapter: RecyclerView.Adapter<InventoryItemListAdapter.My
         holder.itemView.price_eur_txt.text = currentItem.price_eur.toString()
 
         holder.itemView.rowLayout.setOnClickListener {
-            val action = InventoryItemListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            val action = InventoryItemListFragmentDirections.actionListInventoryToUpdateInventory(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
     }

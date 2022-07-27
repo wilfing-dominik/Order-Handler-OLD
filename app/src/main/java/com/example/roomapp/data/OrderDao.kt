@@ -2,7 +2,6 @@ package com.example.roomapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.roomapp.model.InventoryItem
 import com.example.roomapp.model.Order
 
 @Dao

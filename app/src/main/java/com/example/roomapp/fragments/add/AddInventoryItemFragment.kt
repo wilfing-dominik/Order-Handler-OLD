@@ -52,7 +52,7 @@ class AddInventoryItemFragment : Fragment() {
             inventoryItemViewModel.addInventoryItem(inventoryItem)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
             // Navigate Back
-            findNavController().navigate(R.id.action_addFragment_to_listFragment)
+            findNavController().navigate(R.id.action_add_inventory_to_list_inventory)
         }else{
             Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_LONG).show()
         }

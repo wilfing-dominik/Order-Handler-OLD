@@ -8,15 +8,9 @@
         android:id="@+id/inventory_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Termélista"
-        tools:layout_editor_absoluteX="265dp"
+        android:text="Terméklista"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="279dp"
         tools:layout_editor_absoluteY="16dp" />
 
-    <Button
-        android:id="@+id/log_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Összesített adatok"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="84dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

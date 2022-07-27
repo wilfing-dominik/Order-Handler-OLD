@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomapp.R
 import com.example.roomapp.viewmodel.InventoryItemViewModel
-import kotlinx.android.synthetic.main.fragment_list.view.*
+import kotlinx.android.synthetic.main.fragment_list_inventory_item.*
 import kotlinx.android.synthetic.main.fragment_list_inventory_item.view.*
 
 class InventoryItemListFragment : Fragment() {
@@ -38,7 +38,7 @@ class InventoryItemListFragment : Fragment() {
         })
 
         view.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listFragment_to_addFragment)
+            findNavController().navigate(R.id.action_list_inventory_to_add_inventory)
         }
 
         // Add menu
